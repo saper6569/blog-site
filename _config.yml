@@ -1,0 +1,53 @@
+# Site Settings
+title: "Sanija Perera - Engineering Blog"
+description: "Personal engineering blog covering electrical engineering, projects, and technical insights"
+author: "Sanija Perera"
+email: "saper6569@gmail.com"
+
+# GitHub Pages Configuration
+# For username.github.io repository, use:
+#   url: "https://username.github.io"
+#   baseurl: ""
+# For project repository deployment, use:
+#   url: "https://username.github.io"
+#   baseurl: "/repository-name"
+url: "https://username.github.io"
+baseurl: ""
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Permalinks
+permalink: /:categories/:year/:month/:day/:title/
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:year/:month/:day/:title/
+
+# Theme (commented out since we're using custom layouts)
+# theme: minima
+
+# Social Links
+github_username: playper3
+twitter_username: ""
+linkedin_username: ""
