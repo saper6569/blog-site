@@ -7,15 +7,14 @@ title: Home
     <section class="intro">
         <h1>Welcome</h1>
         <p class="lead">
-            I'm an Electrical Engineering student passionate about technology, innovation, and sharing knowledge 
-            through technical writing and projects.
+            I'm an Electrical Engineering student passionate about technology, innovation, and sharing knowledge.
         </p>
     </section>
 
     <section class="quick-links">
         <h2>Quick Links</h2>
         <ul class="link-list">
-            <li><a href="{{ '/projects' | relative_url }}">View My Projects</a> - Engineering projects and experiments</li>
+            <li><a href="{{ '/projects' | relative_url }}">View My Projects</a> - Engineering projects</li>
             <li><a href="{{ '/blog' | relative_url }}">Read My Blog</a> - Technical articles and insights</li>
             <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub Profile</a> - Code repositories and contributions</li>
         </ul>

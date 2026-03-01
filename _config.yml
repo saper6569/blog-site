@@ -11,8 +11,8 @@ email: "saper6569@gmail.com"
 # For project repository deployment, use:
 #   url: "https://username.github.io"
 #   baseurl: "/repository-name"
-url: "https://username.github.io"
-baseurl: ""
+url: "https://saper6569.github.io"
+baseurl: "/blog-site"
 
 # Build Settings
 markdown: kramdown

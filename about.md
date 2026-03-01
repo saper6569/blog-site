@@ -7,9 +7,8 @@ title: About
     <h1>About Me</h1>
     
     <p>
-        I'm an Electrical Engineering student with a passion for technology, innovation, and continuous learning. 
-        This blog serves as a platform to document my projects, share technical insights, and explore various 
-        aspects of electrical engineering and related fields.
+        Hi, I'm an Electrical Engineering student at Queens with a passion for technology, innovation, and continuous learning. 
+        This blog serves as a platform to document my projects and share technical insights.
     </p>
 
     <h2>Interests</h2>
@@ -18,7 +17,7 @@ title: About
         <li>Embedded systems</li>
         <li>Signal processing</li>
         <li>Power systems</li>
-        <li>Technical writing</li>
+        <li>Audio electronics</li>
     </ul>
 
     <h2>Contact</h2>
