@@ -17,7 +17,7 @@ title: Projects
                 Ongoing - Underwater esp32/ raspberry pi ROV for measuring water pollution. 
             </p>
             <div class="project-links">
-                <a href="#" class="project-link">Read More</a>
+                <a href="{{ '/underwater-rov' | relative_url }}" class="project-link">Read More</a>
             </div>
         </article>
 
