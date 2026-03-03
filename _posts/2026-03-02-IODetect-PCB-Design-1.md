@@ -17,11 +17,11 @@ The main constraint when designing the pcb was the use of a pcb printer on campu
 
 The second constraint is size and form factor, the aim was to make the pcb as compact as possible to ensure that the final prototype would be portable and also that it would fit inside the casing that the physical team already designed. This was not much of an issue since the esp and Arduino didn't take up much space.
 
-![Schematic ]({{ 'assets/images/2026-03-02 schem.jpg' | relative_url }})
+![Schematic image]({{ 'assets/images/2026-03-02 schem.png' | relative_url }})
 <center>Schematic</center>
 
-![Schematic ]({{ 'assets/images/2026-03-02 before.jpg' | relative_url }})
+![first image]({{ 'assets/images/2026-03-02 before.png' | relative_url }})
 <center>3d veiw of first design</center>
 
-![Schematic ]({{ 'assets/images/2026-03-02 3d layout.jpg' | relative_url }})
+![3d image]({{ 'assets/images/2026-03-02 3d layout.png' | relative_url }})
 <center>3d veiw after iteration</center>
