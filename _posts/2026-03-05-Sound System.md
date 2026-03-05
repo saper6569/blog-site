@@ -27,13 +27,13 @@ For this project I decided to implement a prebuilt power supply since they are c
 # Systems
 With the main components planned out I decided to plan out the systems that would be traversed from input to speaker. 
 
-    1. Headphone jack input
-    2. Buffer
-    3. 3 band equalizer
-    4. Master volume
-    5. Active crossover 2.1 split
-    6. Amplifier
-    7. Speaker output
+1. Headphone jack input
+2. Buffer
+3. 3 band equalizer
+4. Master volume
+5. Active crossover 2.1 split
+6. Amplifier
+7. Speaker output
 
 ## Breakdown of 1-4
 The input from the headphone jack is stereo, so the left and right lines will be kept isolated from each other. The input signal will be filtered to reduce noise and fed into an op amp based buffer (gain = 1) which will aim to minimize loading effects on the signal, that might be caused by the rest of the circuitry. Next the audio signals will be fed through a 3 band eq which will have a 3 potentiometer ui. After this a logarithmic potentiometer will be used as the master volume knob. 
