@@ -34,8 +34,10 @@ With the main components planned out I decided to plan out the systems that woul
     5. Active crossover 2.1 split
     6. Amplifier
     7. Speaker output
+
 ## Breakdown of 1-4
 The input from the headphone jack is stereo, so the left and right lines will be kept isolated from each other. The input signal will be filtered to reduce noise and fed into an op amp based buffer (gain = 1) which will aim to minimize loading effects on the signal, that might be caused by the rest of the circuitry. Next the audio signals will be fed through a 3 band eq which will have a 3 potentiometer ui. After this a logarithmic potentiometer will be used as the master volume knob. 
+
 ## Breakdown of 5-7
 An active crossover is used to split full-range audio into specific frequency bands (ex. highs, mids, and lows) directing them only to the drivers designed to handle them (tweeters, mid-ranges, woofers). This prevents damage to components, minimizes distortion, improves sound clarity, and increases overall efficiency. since I am using a 2.1 system I need a low pass filter for the subwoofer and 2 high pass filters for the 2 stereo speakers. After being split the audio signals are amplified with minimal distortion and output from the speakers.
 
