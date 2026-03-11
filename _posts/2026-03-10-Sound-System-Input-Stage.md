@@ -1,72 +1,28 @@
-
-  
-
 ---
-
-  
-
 layout: post
-
-  
-
 title: "Sound System Research"
-
-  
-
 date: 2026-03-05
-
-  
-
 tags: [Sound System, Project]
-
-  
-
 ---
 
-  
-
-  
 
 # Sound System Project
 
 **Disclaimer:
-
 This project involves high-power electronics, including circuits that can carry dangerous voltages and currents. Improper design, construction, or handling may result in electric shock, burns, fire, equipment damage, or personal injury. The information shared here is for educational and documentation purposes and is not a complete guide. Therefore it should not be followed blindly. Stay safe.**
 
-  
-
 In the past couple of days during my spare time I have been working on the input stages of the sound system. this is everything leading to the amplifier, more specifically: headphone jack input, volume control, eq and buffering.
-
   
-
-  
-
 ## Changes From Original Plan
-
-  
-
 I ended up changing the process order, as research led to me finding that it is more common to buffer the input, following this with volume control and finally the eq stage. The buffer earl on would prevent loading effects on the input device by providing high impedance.
 
-  
-
-  
-
 Another major difference I made was switching to a dual power supply. My original plan was to use dc coupling to push signals to entirely positive voltage range and operate rail to rail op amps with single supply. However I noticed that dual power supplies cost relatively the same as single supply and therefore I though it would save the hassle of having to add dc offsets and decided to just go with the dual power supply.
-
   
-
-  
-
 # Input Stage
-
-  
 
 ![Input Schematic image]({{ 'assets\images\2026-03-10 input.png' | relative_url }})
 
 <center>Input schematic</center>
-
-  
-  
 
 The first step in the audio processing is the headphone jack. this acts as the entrance point for audio signals into the system. I found that modern devices use a standard called CTIA for TRRS jacks. TRRS are the headphone jacks that include ground, 2 stereo lines and a microphone line. They are compatible with TRS as well (no microphone line).
 
