@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sound System Reasearch"
+title: "Sound System Research"
 date: 2026-03-05
 tags: [Sound System, Project]
 ---
