@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sound System Research"
+title: "Sound System Input Stages"
 date: 2026-03-10
 tags: [Sound System, Project]
 ---
@@ -14,7 +14,7 @@ This project involves high-power electronics, including circuits that can carry 
 In the past couple of days during my spare time I have been working on the input stages of the sound system. this is everything leading to the amplifier, more specifically: headphone jack input, volume control, eq and buffering.
   
 ## Changes From Original Plan
-I ended up changing the process order, as research led to me finding that it is more common to buffer the input, following this with volume control and finally the eq stage. The buffer earl on would prevent loading effects on the input device by providing high impedance.
+I ended up changing the process order, as research led to me finding that it is more common to buffer the input, following this with volume control and finally the eq stage. The buffer early on would prevent loading effects on the input device by providing high impedance.
 
 Another major difference I made was switching to a dual power supply. My original plan was to use dc coupling to push signals to entirely positive voltage range and operate rail to rail op amps with single supply. However I noticed that dual power supplies cost relatively the same as single supply and therefore I though it would save the hassle of having to add dc offsets and decided to just go with the dual power supply.
   
@@ -30,7 +30,7 @@ The first step in the audio processing is the headphone jack. this acts as the e
 
   
 
-After the signal enters the headphone jack I use a high pass filter to remove any unwanted noise. I made sure that the cut-off frequency of the filter wouldn't remove any frequencies from 20hz-20khz to ensure no audible cut-off. I found that isn't fully necessary but I did it just in case.
+After the signal enters the headphone jack I use a filter to remove any unwanted noise. I made sure that the cut-off frequency of the filter wouldn't remove any frequencies from 20hz-20khz to ensure no audible cut-off. I found that isn't fully necessary but I did it just in case. I also included a 10uF capacitor in series with the buffer. The coupling capacitor blocks any DC offset from the source so the signal is referenced around the amplifier’s 0V midpoint.
 
   
 
@@ -66,25 +66,21 @@ The next part of the circuit is the volume control. This uses a simple logarithm
 
   
 
-For the equalizer I went with a pretty widely used 3 band active Baxandall equalizer. It has tone control for highs mids and lows. And allows boosting thanks to the op amp. Without it you would only be able to reduce frequencies making it passive filter.
+For the equalizer I decided to use a fairly common 3-band active Baxandall equalizer. This design allows independent control over low, mid, and high frequencies, letting the user boost or cut different parts of the audio spectrum. Because the circuit is active (it uses an op amp), it can both attenuate and amplify certain frequency ranges. Passive tone controls can only reduce frequencies, not boost them.
 
-  
+The Baxandall equalizer works by using RC networks inside the op amp’s feedback path to shape the frequency response of the amplifier. Rather than splitting the signal into completely separate frequency bands, these networks modify how the amplifier responds to different frequencies. By adjusting the potentiometers, the amount of feedback at certain frequencies changes, which increases or decreases the gain for those frequency ranges.
 
-  
+Each tone control targets a different part of the audio spectrum:
 
-The first part of the eq uses some pretty simple RC circuits to first split the signal into frequency ranges (high, mid, low). And then from there the potentiometers decide how much of each frequency range is allowed through the feedback network.
+- Low frequencies are controlled using a network that behaves like a low-pass response, affecting bass content.
 
-  
+- High frequencies are controlled using a network that behaves like a high-pass response, affecting treble content.
 
-  
+- Mid frequencies are controlled with a network that produces a band-shaped response centred around the middle of the audio spectrum.
 
-As you might have noticed there are variations in each frequency section. The high pass filter uses a small capacitor which only allows high frequencies to pass through. The low pass filter uses a large capacitor which only lets lower frequencies through. While the mid control is made by using a band-pass filter which cuts of low and high frequencies only letting the middle frequencies through.
+Adjusting the potentiometers changes how strongly each of these networks influences the feedback of the op amp, allowing the gain at those frequencies to be increased or decreased. The op amp stage ultimately produces a single output signal whose gain varies with frequency, which is what creates the equalization effect.
 
-  
-
-  
-
-Next is the op amp stage. The op amp is setup as a inverting summing amplifier. It is used to bring back all the 3 separate signals into a single signal again, using weighted addition. the amplifier gain changes with Frequency, which allows different frequency ranges to be boost or cut. I think my explanation of this is not the best so feel free to check out [this](https://sound-au.com/articles/eq.htm) to get a better understanding of equalisers. There is some really good information on Baxandall eqs in it too.
+Feel free to check out [this](https://sound-au.com/articles/eq.htm) to get a better understanding of equalisers. There is some really good information on Baxandall eqs in it too.
 
 **All op amps in schematics are OPA1656ID. They very low distortion and very low noise and are relatively cheap.**
   
