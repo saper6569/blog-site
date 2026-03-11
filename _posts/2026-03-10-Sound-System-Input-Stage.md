@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sound System Research"
-date: 2026-03-05
+date: 2026-03-10
 tags: [Sound System, Project]
 ---
 
@@ -20,7 +20,7 @@ Another major difference I made was switching to a dual power supply. My origina
   
 # Input Stage
 
-![Input Schematic image]({{ 'assets\images\2026-03-10 input.png' | relative_url }})
+![Input Schematic image]({{ 'assets/images/2026-03-10 input.png' | relative_url }})
 
 <center>Input schematic</center>
 
@@ -44,7 +44,7 @@ After being filtered a bit I went to a op amp based buffer. Buffers have a gain 
 
 # Volume Stage
 
-![Volume Schematic image]({{ 'assets\images\2026-03-10 volume.png' | relative_url }})
+![Volume Schematic image]({{ 'assets/images/2026-03-10 volume.png' | relative_url }})
 
 <center>Volume stage schematic</center>
 
@@ -58,9 +58,9 @@ The next part of the circuit is the volume control. This uses a simple logarithm
 
 # Equalizer
 
-![Equalizer Left Schematic image]({{ 'assets\images\2026-03-10 left eq.png' | relative_url }})
+![Equalizer Left Schematic image]({{ 'assets/images/2026-03-10 left eq.png' | relative_url }})
 
-![Equalizer Right Schematic image]({{ 'assets\images\2026-03-10 right eq.png' | relative_url }})
+![Equalizer Right Schematic image]({{ 'assets/images/2026-03-10 right eq.png' | relative_url }})
 
 <center>Baxandall EQ schematic</center>
 
