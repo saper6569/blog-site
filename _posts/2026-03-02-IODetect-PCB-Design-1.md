@@ -2,7 +2,7 @@
 layout: post
 title: "IODetect pcb"
 date: 2026-03-02
-tags: [IO Detect - QBIT, Project]
+tags: [IO Detect - QBIT, Project, Design Team]
 ---
 
 # PCB Purpose
