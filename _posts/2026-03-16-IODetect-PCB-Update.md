@@ -25,10 +25,10 @@ Another lkarge issue was that the measurements for the esp32 were off by around 
 
  The other main change I added was large copper pours for heat reduction. The coppper pours were added for ground and power planes specificcally in the higher current traces.  
 
- ![Layout image]({{ 'assets\images\2026-03-16 3d.png' | relative_url }})
+ ![Layout image]({{ 'assets/images/2026-03-16 3d.png' | relative_url }})
 <center>PCB layout after changes</center>
 
-![3d image]({{ 'assets\images\2026-03-16 pcb.png' | relative_url }})
+![3d image]({{ 'assets/images/2026-03-16 pcb.png' | relative_url }})
 <center>3d veiw after changes</center>
 
 # Upcoming Work
