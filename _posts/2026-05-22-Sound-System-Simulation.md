@@ -23,7 +23,7 @@ The transient analysis is to evaluate the full system behaviour in the time doma
 # Circuit Implementation And Assumptions
 The system being modeled consists of 4 parts: the input stage, the volume control, the equalizer stage, and the crossover stage. The 4 stages are cascaded while also keeping left and right channels isolated. A schematic of the system is included below for reference.
 
-![schematic]({{ ‘assets/images/2026-05-15 system.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-15 system.png’ | relative_url }})
 
 All operational amplifiers are modeled using LTspice’s built-in model “opamp”. This model uses an open loop gain (Aol) of 100k, an infinite input impedance, and no supply rail voltage limits. The built-in LTspice op-amp model was used as an approximation. This model assumes infinite input impedance, fixed open-loop gain, and does not model output swing limits, slew rate, or rail clipping. Since expected signal amplitudes remain well below the intended hardware supply rails, this approximation is considered sufficient for preliminary frequency and transient analysis. Using this built-in op amp model greatly simplifies analysis as well as setup. 
 
@@ -39,7 +39,7 @@ Since both AC and Transient analysis are being performed 2 schematic layouts are
 ### Crossover Schematic for AC Analysis
 For assessing the crossover functionality, a single channel can be analyzed, since both channels are identical. The voltage source is set to an AC signal with an amplitude of 1V.
 
-![schematic]({{ ‘assets/images/2026-05-15 crossover.jpg’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-15 crossover.jpg’ | relative_url }})
 
 ### Full System Schematic for Transient Analysis
 For assessing the system as a whole, all stages are cascaded as they would in the physical implementation. The input waveform comes directly from a 2-channel wav file, which LTspice normalizes to 1V amplitude centred at 0.
@@ -72,9 +72,9 @@ This setup allows the crossover’s gain and attenuation characteristics to be o
 ## Results
 Below is a frequency response plot of the crossover circuit, as well as a close up of the crossover frequency. From these plots, the crossover frequency is found to be 101Hz at an attenuation of -6.26dB. Furthermore, these plots display that the crossover has a steep roll-off rate of 24 dB per octave as intended.
 
-![schematic]({{ ‘assets/images/2026-05-17 crossover filters.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-17 crossover filters.png’ | relative_url }})
 
-![schematic]({{ ‘assets/images/2026-05-17 crossover frequency.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-17 crossover frequency.png’ | relative_url }})
 
 The other key characteristics of the crossover that are analyzed are ensuring a flat summed amplitude response across the passband. This can be done in LTspice by showing the summed waveforms of highs-out and lows-out. As seen in the 2 graphs below, there is a relatively flat response. There is a -226.12mdB attenuation at the crossover frequency, which is likely due to the differing cut-off frequencies between the high-pass and low-pass filters (read more on this from the [previous post](/2026-05-07-Sound-System-Crossover-Design.md#crossover-frequency-mismatch)). It is very unlikely that this difference is perceptible to the human ear under normal listening conditions.
 
@@ -95,7 +95,7 @@ The transient simulation is used for assessing the entire system using “real�
 ## Potentiometer Setup
 Due to potentiometers not being natively supported by LTspice, they are implemented using simple voltage dividers. A real potentiometer is just a single resistive strip with a movable wiper that splits the total resistance into two sections, which exactly matches a voltage divider. Below is the volume potentiometer with the changeable parameter v:
 
-![schematic]({{ ‘assets/images/2026-05-19 pot.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-19 pot.png’ | relative_url }})
 
 where v represents the wiper position and ranges from 0 to 1.
 
@@ -256,11 +256,11 @@ Below are the audio samples demonstrating this behaviour:
 
 Apart from sonic analysis, waveforms can also be interpreted to display system behaviour. below a section from the plot showing the left input against the left output summed with the subwoofer channel. This displays the lack of distortion as the waveform remains very similar to the original input, apart from the small phase shift. The phase shift does not affect the audio as the same shift is applied to all the output channels.
 
-![schematic]({{ ‘assets/images/2026-05-19 phase.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-19 phase.png’ | relative_url }})
 
 The functionality of the volume potentiometer can also be verified in a similar manner. Below, the output waveform is plotted, where the green line represents parameter v set to 0.1 and the blue where v is set to 0.9. The change in amplitude, as well as the lack of distortion between the signals, displays proper functionality.
 
-![schematic]({{ ‘assets/images/2026-05-19 volume.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-19 volume.png’ | relative_url }})
 
 ### Conclusions
 By running the transient analysis, the audio outputs generated from the simulations demonstrate that the system is functioning as intended. The crossover functionality is confirmed by the separation of frequency content into the subwoofer and stereo channels. The isolated bass track confirms effective extraction of low-frequency audio, and the left/right outputs preserve the higher-frequency stereo information.
