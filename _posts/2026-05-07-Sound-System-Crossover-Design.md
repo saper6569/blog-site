@@ -100,7 +100,7 @@ $$Q = \frac{1}{2}\sqrt{\frac{R_2}{R_1}} = \frac{1}{2}\sqrt{2} \approx 0.707 \che
  
 **Low-Pass Filter:**
  
-Stage U3: R1 = 30 kΩ, R2 = 18 kΩ, C1 = 47 nF, C2 = 100 nF 
+R1 = 30 kΩ, R2 = 18 kΩ, C1 = 47 nF, C2 = 100 nF 
  
 $$f_c = \frac{1}{2\pi \sqrt{18000 \times 30000 \times 100 \times 10^{-9} \times 47 \times 10^{-9}}}$$
  
