@@ -153,40 +153,118 @@ This setup allows both electrical verification of the complete audio system and 
 ## Results
 This section presents the audio outputs generated from the simulation, including the original input signal, the separated frequency bands (crossover), and the final reconstructed stereo mix. The files included are the original audio reference, the isolated subwoofer output, the processed left and right stereo channels, and the combined output file where all processed signals are summed together.
 
-<div style="text-align: center;">
+<style>
+  .audio-section {
+    margin: 40px 0;
+    text-align: center;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="assets/files/2026-05-19 Daft-Punk-One-More-Time.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Original Audio File</figcaption>
-  </figure>
+  .audio-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="assets/files/2026-05-19 bass.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Subwoofer (Bass) Output</figcaption>
-  </figure>
+  .audio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="assets/files/2026-05-19 l+r.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Left + Right Stereo Channels</figcaption>
-  </figure>
+  .audio-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    background: #fafafa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
 
-  <figure>
-    <audio controls>
-      <source src="assets/files/2026-05-19 together.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Final Combined Output</figcaption>
-  </figure>
+  .audio-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
 
+  audio {
+    width: 100%;
+  }
+
+  .caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  .audio-card--wide {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #f8f9ff, #eef3ff);
+  border: 2px solid #cfd8ff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.audio-card--wide h3 {
+  font-size: 1.3rem;
+}
+</style>
+
+---
+
+## Original Signal
+
+<div class="audio-section">
+
+  <div class="audio-title">Original Audio</div>
+
+  <div class="audio-grid">
+    <div class="audio-card">
+
+      <h3>Full Track</h3>
+
+      <audio controls>
+        <source src="{{ site.baseurl }}/assets/files/2026-05-19-Daft-Punk-One-More-Time.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+
+      <div class="caption">Unprocessed reference signal</div>
+
+    </div>
+  </div>
+</div>
+
+
+## Processed Outputs
+
+<div class="audio-section">
+
+  <div class="audio-title">Filter / Crossover Outputs</div>
+
+  <div class="audio-grid">
+
+    <div class="audio-card">
+      <h3>Subwoofer (Bass)</h3>
+      <audio controls>
+        <source src="{{ site.baseurl }}/assets/files/2026-05-19 bass.wav" type="audio/wav">
+      </audio>
+      <div class="caption">Low-frequency extraction</div>
+    </div>
+
+    <div class="audio-card">
+      <h3>Left + Right</h3>
+      <audio controls>
+        <source src="{{ site.baseurl }}/assets/files/2026-05-19 l+r.wav" type="audio/wav">
+      </audio>
+      <div class="caption">Stereo channel reconstruction</div>
+    </div>
+
+    <div class="audio-card audio-card--wide">
+  <h3>Final Mix</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 together.wav" type="audio/wav">
+  </audio>
+  <div class="caption">Summed processed output</div>
+</div>
+
+  </div>
 </div>
 
 Listening to these files demonstrates how the crossover network is functioning in practice. The original audio serves as a baseline for comparison, while the subwoofer file highlights how low-frequency content has been successfully extracted and isolated from the full signal. The stereo left and right outputs show how higher-frequency information is distributed across the two channels, maintaining spatial clarity and channel separation.
@@ -201,58 +279,126 @@ Repeating this process for all three parameters ensures that the response of eac
 
 Below are the audio samples demonstrating this behaviour:
 
+<style>
+  .audio-section {
+    margin: 40px 0;
+    text-align: center;
+  }
 
-<div style="text-align: center;">
+  .audio-title {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="/assets/files/2026-05-19 b_0p1.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Bass (b = 0.1): reduced low-frequency output</figcaption>
-  </figure>
+  .audio-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="/assets/files/2026-05-19 b_0p9.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Bass (b = 0.9): boosted low-frequency output</figcaption>
-  </figure>
+  .audio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="/assets/files/2026-05-19 m_0p1.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Mid (m = 0.1): reduced midrange output</figcaption>
-  </figure>
+  .audio-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    background: #fafafa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
 
-  <figure>
-    <audio controls>
-      <source src="/assets/files/2026-05-19 m_0p9.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Mid (m = 0.9): enhanced midrange output</figcaption>
-  </figure>
+  .audio-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="/assets/files/2026-05-19 t_0p1.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Treble (t = 0.1): reduced high-frequency output</figcaption>
-  </figure>
+  audio {
+    width: 100%;
+  }
 
-  <figure>
-    <audio controls>
-      <source src="/assets/files/2026-05-19 t_0p9.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-    <figcaption>Treble (t = 0.9): enhanced high-frequency output</figcaption>
-  </figure>
+  .caption {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.3;
+  }
 
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #eaeaea;
+    margin-bottom: 8px;
+  }
+</style>
+
+<div class="audio-section"> <div class="audio-title">Bass Filter Response</div> <div class="audio-subtitle">Effect of varying bass gain coefficient (b)</div> <div class="audio-grid">
+<div class="audio-card">
+  <div class="tag">b = 0.1</div>
+  <h3>Reduced Bass</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 b_0p1.wav" type="audio/wav">
+  </audio>
+  <div class="caption">Low-frequency content is heavily attenuated</div>
 </div>
+
+<div class="audio-card">
+  <div class="tag">b = 0.9</div>
+  <h3>Boosted Bass</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 b_0p9.wav" type="audio/wav">
+  </audio>
+  <div class="caption">Strong low-frequency reinforcement</div>
+</div>
+</div> </div>
+
+<div class="audio-section"> <div class="audio-title">Midrange Filter Response</div> <div class="audio-subtitle">Effect of varying mid gain coefficient (m)</div> <div class="audio-grid">
+<div class="audio-card">
+  <div class="tag">m = 0.1</div>
+  <h3>Reduced Midrange</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 m_0p1.wav" type="audio/wav">
+  </audio>
+  <div class="caption">Mid frequencies significantly suppressed</div>
+</div>
+
+<div class="audio-card">
+  <div class="tag">m = 0.9</div>
+  <h3>Enhanced Midrange</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 m_0p9.wav" type="audio/wav">
+  </audio>
+  <div class="caption">Midrange content strongly emphasized</div>
+</div>
+</div> </div>
+
+<div class="audio-section"> <div class="audio-title">Treble Filter Response</div> <div class="audio-subtitle">Effect of varying treble gain coefficient (t)</div> <div class="audio-grid">
+<div class="audio-card">
+  <div class="tag">t = 0.1</div>
+  <h3>Reduced Treble</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 t_0p1.wav" type="audio/wav">
+  </audio>
+  <div class="caption">High-frequency content heavily attenuated</div>
+</div>
+
+<div class="audio-card">
+  <div class="tag">t = 0.9</div>
+  <h3>Enhanced Treble</h3>
+  <audio controls>
+    <source src="{{ site.baseurl }}/assets/files/2026-05-19 t_0p9.wav" type="audio/wav">
+  </audio>
+  <div class="caption">High-frequency content strongly boosted</div>
+</div>
+</div> </div>
+
 
 Apart from sonic analysis, waveforms can also be interpreted to display system behaviour. below a section from the plot showing the left input against the left output summed with the subwoofer channel. This displays the lack of distortion as the waveform remains very similar to the original input, apart from the small phase shift. The phase shift does not affect the audio as the same shift is applied to all the output channels.
 
