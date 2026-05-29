@@ -23,9 +23,9 @@ The transient analysis is to evaluate the full system behaviour in the time doma
 # Circuit Implementation And Assumptions
 The system being modeled consists of 4 parts: the input stage, the volume control, the equalizer stage, and the crossover stage. The 4 stages are cascaded while also keeping left and right channels isolated. A schematic of the system is included below for reference.
 
-![schematic]({{ 'assets/images/2026-05-15 system.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-15 system.png' | relative_url }})
 
-All operational amplifiers are modeled using LTspice’s built-in model “opamp”. This model uses an open loop gain (Aol) of 100k, an infinite input impedance, and no supply rail voltage limits. The built-in LTspice op-amp model was used as an approximation. This model assumes infinite input impedance, fixed open-loop gain, and does not model output swing limits, slew rate, or rail clipping. Since expected signal amplitudes remain well below the intended hardware supply rails, this approximation is considered sufficient for preliminary frequency and transient analysis. Using this built-in op amp model greatly simplifies analysis as well as setup. 
+All operational amplifiers are modeled using LTspice's built-in model “opamp”. This model uses an open loop gain (Aol) of 100k, an infinite input impedance, and no supply rail voltage limits. The built-in LTspice op-amp model was used as an approximation. This model assumes infinite input impedance, fixed open-loop gain, and does not model output swing limits, slew rate, or rail clipping. Since expected signal amplitudes remain well below the intended hardware supply rails, this approximation is considered sufficient for preliminary frequency and transient analysis. Using this built-in op amp model greatly simplifies analysis as well as setup. 
 
 ## Brief System Description
 - **Input Stage:** This is where input audio is fed in. This stage consists of ac coupling capacitors to remove unwanted DC offsets, current limiting resistors, a high pass filter to remove unwanted low frequency noise below the audible range, as well as a unity buffer to reduce loading effects.
@@ -39,7 +39,7 @@ Since both AC and Transient analysis are being performed 2 schematic layouts are
 ### Crossover Schematic for AC Analysis
 For assessing the crossover functionality, a single channel can be analyzed, since both channels are identical. The voltage source is set to an AC signal with an amplitude of 1V.
 
-![schematic]({{ 'assets/images/2026-05-15 crossover.jpg’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-15 crossover.jpg' | relative_url }})
 
 ### Full System Schematic for Transient Analysis
 For assessing the system as a whole, all stages are cascaded as they would in the physical implementation. The input waveform comes directly from a 2-channel wav file, which LTspice normalizes to 1V amplitude centred at 0.
@@ -49,7 +49,7 @@ For assessing the system as a whole, all stages are cascaded as they would in th
 ![schematic]({{ 'assets/images/2026-05-15 system schematic.png' | relative_url }})
 
 # Frequency Response (AC Analysis)
-The frequency response of the crossover is used to validate proper 4th-order Linkwitz-Riley behaviour. This is achieved by cascading two Butterworth filters of the same cutoff frequency, resulting in outputs that are each attenuated by −6 dB at the crossover frequency and remain in phase when summed. Another important confirmation is that the crossover has a roll-off rate of 24 dB per octave, meaning frequencies beyond the crossover point are attenuated very rapidly. The steep slope helps reduce overlap between drivers, improving frequency separation and reducing unwanted distortion or interference outside each speaker’s intended operating range.
+The frequency response of the crossover is used to validate proper 4th-order Linkwitz-Riley behaviour. This is achieved by cascading two Butterworth filters of the same cutoff frequency, resulting in outputs that are each attenuated by −6 dB at the crossover frequency and remain in phase when summed. Another important confirmation is that the crossover has a roll-off rate of 24 dB per octave, meaning frequencies beyond the crossover point are attenuated very rapidly. The steep slope helps reduce overlap between drivers, improving frequency separation and reducing unwanted distortion or interference outside each speaker's intended operating range.
 
 ## Simulation Setup and SPICE Directives
 To evaluate the frequency response of the crossover network, an AC sweep analysis was performed in LTspice. The simulation was configured to analyze how the filter stages attenuate and pass signals across the audible frequency spectrum. An AC sweep analysis tests the circuit at various frequencies to show behaviour at different frequencies.
@@ -67,14 +67,14 @@ These directives configure an AC small-signal analysis with the following parame
 - The sweep ends at 20 kHz, covering the upper range of the audible spectrum.
 - .lib opamp.sub loads external operational amplifier models required by the circuit.
 
-This setup allows the crossover’s gain and attenuation characteristics to be observed across the full audio band.
+This setup allows the crossover's gain and attenuation characteristics to be observed across the full audio band.
 
 ## Results
 Below is a frequency response plot of the crossover circuit, as well as a close up of the crossover frequency. From these plots, the crossover frequency is found to be 101Hz at an attenuation of -6.26dB. Furthermore, these plots display that the crossover has a steep roll-off rate of 24 dB per octave as intended.
 
-![schematic]({{ 'assets/images/2026-05-17 crossover filters.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-17 crossover filters.png' | relative_url }})
 
-![schematic]({{ 'assets/images/2026-05-17 crossover frequency.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-17 crossover frequency.png' | relative_url }})
 
 The other key characteristics of the crossover that are analyzed are ensuring a flat summed amplitude response across the passband. This can be done in LTspice by showing the summed waveforms of highs-out and lows-out. As seen in the 2 graphs below, there is a relatively flat response. There is a -226.12mdB attenuation at the crossover frequency, which is likely due to the differing cut-off frequencies between the high-pass and low-pass filters (read more on this from the [previous post](/2026-05-07-Sound-System-Crossover-Design.md#crossover-frequency-mismatch)). It is very unlikely that this difference is perceptible to the human ear under normal listening conditions.
 
@@ -95,7 +95,7 @@ The transient simulation is used for assessing the entire system using “real�
 ## Potentiometer Setup
 Due to potentiometers not being natively supported by LTspice, they are implemented using simple voltage dividers. A real potentiometer is just a single resistive strip with a movable wiper that splits the total resistance into two sections, which exactly matches a voltage divider. Below is the volume potentiometer with the changeable parameter v:
 
-![schematic]({{ 'assets/images/2026-05-19 pot.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-19 pot.png' | relative_url }})
 
 where v represents the wiper position and ranges from 0 to 1.
 
@@ -104,7 +104,7 @@ As v changes, resistance shifts between the upper and lower resistors while main
 This method provides a simple way to simulate adjustable controls in LTspice without requiring a dedicated potentiometer component.
 
 ## Simulation Setup and SPICE Directives
-To simulate the circuit under a “real” input, LTspice’s built-in wav file support is used. LTspice has the ability to import WAV files as waveforms, as well as export WAV files from waveforms.
+To simulate the circuit under a “real” input, LTspice's built-in wav file support is used. LTspice has the ability to import WAV files as waveforms, as well as export WAV files from waveforms.
 
 To set up the input waveforms from a wav file, voltage sources V1 and V2 are set as follows:
 ```
@@ -146,7 +146,7 @@ These directives configure the simulation as follows:
 44.1k sets the sample rate to 44.1 kHz, matching CD-quality audio (lossless).
 - BLEFT and BRIGHT are used to combine the left/right outputs with the subwoofer output into mixed audio channels, Lmix and Rmix. These are then combined as channels into “together.wav”.
 - .lib opamp.sub loads external operational amplifier models required by the circuit.
-- .tran 10 performs a transient simulation over 10 seconds to capture the circuit’s time-domain response.
+- .tran 10 performs a transient simulation over 10 seconds to capture the circuit's time-domain response.
 
 This setup allows both electrical verification of the complete audio system and subjective evaluation by generating playable audio files from the simulated outputs.
 
@@ -157,7 +157,7 @@ This section presents the audio outputs generated from the simulation, including
 
   <figure>
     <audio controls>
-      <source src="/assets/files/2026-05-19 Daft-Punk-One-More-Time.wav" type="audio/wav">
+      <source src="assets/files/2026-05-19 Daft-Punk-One-More-Time.wav" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
     <figcaption>Original Audio File</figcaption>
@@ -165,7 +165,7 @@ This section presents the audio outputs generated from the simulation, including
 
   <figure>
     <audio controls>
-      <source src="/assets/files/2026-05-19 bass.wav" type="audio/wav">
+      <source src="assets/files/2026-05-19 bass.wav" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
     <figcaption>Subwoofer (Bass) Output</figcaption>
@@ -173,7 +173,7 @@ This section presents the audio outputs generated from the simulation, including
 
   <figure>
     <audio controls>
-      <source src="/assets/files/2026-05-19 l+r.wav" type="audio/wav">
+      <source src="assets/files/2026-05-19 l+r.wav" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
     <figcaption>Left + Right Stereo Channels</figcaption>
@@ -181,7 +181,7 @@ This section presents the audio outputs generated from the simulation, including
 
   <figure>
     <audio controls>
-      <source src="/assets/files/2026-05-19 together.wav" type="audio/wav">
+      <source src="assets/files/2026-05-19 together.wav" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
     <figcaption>Final Combined Output</figcaption>
@@ -195,7 +195,7 @@ When the signals are recombined, the final output demonstrates that the system p
 
 The performance of the 3-band equalizer is evaluated by systematically varying the control parameters b (bass), m (mid), and t (treble) within the simulation. Each parameter is individually tested at two extreme values, 0.1 and 0.9, while all other parameters are held constant at 0.5. This approach isolates the effect of each frequency band, allowing the contribution of bass, midrange, and treble shaping to be clearly observed.
 
-By setting a single parameter to 0.1, the corresponding frequency band is significantly attenuated, making it possible to observe how the circuit behaves under reduced gain conditions. Conversely, setting the parameter toward 0.9 increases the relative emphasis of that frequency band, showing how strongly the filter allows or boosts that portion of the spectrum. This contrast provides a clear visual and audible indication of each control’s influence on the overall signal.
+By setting a single parameter to 0.1, the corresponding frequency band is significantly attenuated, making it possible to observe how the circuit behaves under reduced gain conditions. Conversely, setting the parameter toward 0.9 increases the relative emphasis of that frequency band, showing how strongly the filter allows or boosts that portion of the spectrum. This contrast provides a clear visual and audible indication of each control's influence on the overall signal.
 
 Repeating this process for all three parameters ensures that the response of each band can be independently verified. The resulting outputs are then compared to confirm that the equalizer behaves predictably.
 
@@ -256,11 +256,11 @@ Below are the audio samples demonstrating this behaviour:
 
 Apart from sonic analysis, waveforms can also be interpreted to display system behaviour. below a section from the plot showing the left input against the left output summed with the subwoofer channel. This displays the lack of distortion as the waveform remains very similar to the original input, apart from the small phase shift. The phase shift does not affect the audio as the same shift is applied to all the output channels.
 
-![schematic]({{ 'assets/images/2026-05-19 phase.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-19 phase.png' | relative_url }})
 
 The functionality of the volume potentiometer can also be verified in a similar manner. Below, the output waveform is plotted, where the green line represents parameter v set to 0.1 and the blue where v is set to 0.9. The change in amplitude, as well as the lack of distortion between the signals, displays proper functionality.
 
-![schematic]({{ 'assets/images/2026-05-19 volume.png’ | relative_url }})
+![schematic]({{ 'assets/images/2026-05-19 volume.png' | relative_url }})
 
 ### Conclusions
 By running the transient analysis, the audio outputs generated from the simulations demonstrate that the system is functioning as intended. The crossover functionality is confirmed by the separation of frequency content into the subwoofer and stereo channels. The isolated bass track confirms effective extraction of low-frequency audio, and the left/right outputs preserve the higher-frequency stereo information.
