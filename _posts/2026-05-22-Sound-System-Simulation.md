@@ -8,7 +8,7 @@ tags: [Sound System, Project]
 >**Disclaimer:
 >This project involves high-power electronics, including circuits that can carry dangerous voltages and currents. Improper design, construction, or handling may result in electric shock, burns, fire, equipment damage, or personal injury. The information shared here is for educational and documentation purposes and is not a complete guide. Therefore it should not be followed blindly. Stay safe.**
 
->**Note: LTspice will be used for simulations however any spice software can be used to gain the same results. All models and simulations are included for anyone who would like to explore, modify, or run the simulations themselves.**
+>**Note: LTspice will be used for simulations however any spice software can be used to gain the same results. All models and simulations are included for anyone who would like to explore, modify, or run the simulations themselves. Find simulations [here](https://github.com/saper6569/Sound-System)**
 
 # Background
 Simulation Program with Integrated Circuit Emphasis (SPICE) is a tool used for predicting the behaviour of a design. It allows verification and analysis of circuits much more efficiently than manual calculations. SPICE relies on mathematical models in analysing circuits. It can be used for DC, AC, and transient analysis. Usage of SPICE can allow the designer to pinpoint potential issues before they are actually implemented.
