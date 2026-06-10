@@ -28,19 +28,7 @@ title: Projects
                 Ongoing - 300W audio amplifier for a sound system.  
             </p>
             <div class="project-links">
-                <a href="#" class="project-link">Read More</a>
-            </div>
-        </article>
-
-
-        <article class="project-item">
-            <h2>IO Detect - QBIT</h2>
-            <p class="project-description">
-                Ongoing - My contributions to QBIT (Queen's Biomedical Innovation Team) in 
-                making a iodeine defficeny detecting "Lab on a Chip".
-            </p>
-            <div class="project-links">
-                <a href="#" class="project-link">Read More</a>
+                <a href="{{'/sound-system' | relative_url}}" class="project-link">Read More</a>
             </div>
         </article>
 

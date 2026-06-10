@@ -1,14 +1,15 @@
 ---
 layout: default
-title: Underwater ROV
+title: Sound System
 ---
 
-# Underwater ROV
+# Sound System
+
 
 # Posts
 
 <div class="post-grid">
-  {% for post in site.tags["Underwater ROV"] %}
+  {% for post in site.tags["Sound System"] %}
     <a class="post-card" href="{{ post.url | relative_url }}">
       {% if post.image %}
         <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
