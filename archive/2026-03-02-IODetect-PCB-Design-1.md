@@ -5,6 +5,8 @@ date: 2026-03-02
 tags: [IO Detect - QBIT, Project, Design Team]
 ---
 
+https://saper6569.github.io/blog-site/archive/2026-03-02-IODetect-PCB-Design-1/
+
 # PCB Purpose
 
 QBIT is working on a iodine deficiency detecting device that will use beer lamberts law to calculate iodine concentrations in pee. This is being done mainly using an opt101 sensor and a led of known wavelength. The project uses a esp32 for the main controller as well as an Arduino nano to collect samples from the opt sensor. The main purpose of the pcb is to allow all the peripherals to communicate with each other.

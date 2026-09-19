@@ -5,6 +5,8 @@ date: 2026-03-16
 tags: [IO Detect - QBIT, Project, Design Team]
 ---
 
+https://saper6569.github.io/blog-site/archive/2026-03-16-IODetect-PCB-Update/
+
 # Issues with previous design
 
 The main issue from the last print was that the pcb had signal traces that lied under and near the rf antenna of the eps32. The original plan was that this was not being used but it was later decided that the esp32 would be transmitting data using its 2.4GHz capabilities. I was aware that thius would be an issue as this could cause interfearance that would effect the signal integrity. 
