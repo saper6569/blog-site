@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Verilog Based I2S dac"
-date: 2026-08-12
+date: 2026-09-13
 tags: [Project, Code Explanation]
 ---
 
