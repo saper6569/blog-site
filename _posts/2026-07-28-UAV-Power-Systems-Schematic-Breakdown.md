@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Power System Schematic Breakdown"
 date: 2026-07-28
 tags: [Underwater ROV, Project]

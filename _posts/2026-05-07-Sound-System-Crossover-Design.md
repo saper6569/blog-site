@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Sound System Crossover Design"
 date: 2026-05-07
 tags: [Sound System, Project]

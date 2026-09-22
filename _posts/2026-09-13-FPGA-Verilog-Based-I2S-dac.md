@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Verilog Based I2S dac"
 date: 2026-09-13
 tags: [Project, Code Explanation]

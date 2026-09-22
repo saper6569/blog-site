@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Sound System Input Stages"
 date: 2026-03-10
 tags: [Sound System, Project]

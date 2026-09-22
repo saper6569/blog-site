@@ -1,11 +1,11 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "IODetect pcb"
 date: 2026-03-02
 tags: [IO Detect - QBIT, Project, Design Team]
 ---
-
-https://saper6569.github.io/blog-site/archive/2026-03-02-IODetect-PCB-Design-1/
 
 # PCB Purpose
 

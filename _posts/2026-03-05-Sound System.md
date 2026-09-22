@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Sound System Research"
 date: 2026-03-05
 tags: [Sound System, Project]

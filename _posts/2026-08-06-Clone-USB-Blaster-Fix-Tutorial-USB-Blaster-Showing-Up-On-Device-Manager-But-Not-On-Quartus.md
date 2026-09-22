@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Clone USB Blaster Fix Tutorial (USB Blaster Showing Up On Device Manager But Not On Quartus"
 date: 2026-08-06
 tags: [Tutorial, FPGA, Altera, Quartus, USB-Blaster]

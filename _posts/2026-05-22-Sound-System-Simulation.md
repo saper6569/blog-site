@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Sound System SPICE Simulations"
 date: 2026-05-22
 tags: [Sound System, Project]

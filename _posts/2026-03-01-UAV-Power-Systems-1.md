@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Power System Changes"
 date: 2026-03-01
 tags: [Underwater ROV, Project]

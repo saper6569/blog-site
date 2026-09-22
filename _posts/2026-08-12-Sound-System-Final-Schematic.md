@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "Sound System Final Schematic"
 date: 2026-08-12
 tags: [Sound System, Project]

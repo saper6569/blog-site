@@ -1,5 +1,7 @@
 ---
 layout: post
+author: "Sanija Perera"
+github: "https://github.com/saper6569"
 title: "QIO Board Explanation"
 date: 2026-09-22
 tags: [QVEX-QIO, Design Team, PCB Documentation]
