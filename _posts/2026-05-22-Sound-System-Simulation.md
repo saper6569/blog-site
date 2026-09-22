@@ -11,14 +11,14 @@ tags: [Sound System, Project]
 >**Note: LTspice will be used for simulations however any spice software can be used to gain the same results. All models and simulations are included for anyone who would like to explore, modify, or run the simulations themselves. Find simulations [here](https://github.com/saper6569/Sound-System)**
 
 # Background
-Simulation Program with Integrated Circuit Emphasis (SPICE) is a tool used for predicting the behaviour of a design. It allows verification and analysis of circuits much more efficiently than manual calculations. SPICE relies on mathematical models in analysing circuits. It can be used for DC, AC, and transient analysis. Usage of SPICE can allow the designer to pinpoint potential issues before they are actually implemented.
+Simulation Program with Integrated Circuit Emphasis (SPICE) is a tool used for predicting the behavior of a design. It allows verification and analysis of circuits much more efficiently than manual calculations. SPICE relies on mathematical models in analyzing circuits. It can be used for DC, AC, and transient analysis. Usage of SPICE can allow the designer to pinpoint potential issues before they are actually implemented.
 
 It is important to note that results from spice simulation will often differ from the real-world implementations, which is discussed later.
 
 ## Simulation Objectives
-As stated above, spice simulation allows relatively simple design validation. This is to ensure that the system works as intended and to identify any issues. For preliminary analysis, simulations are run for both AC analysis and transient analysis. AC analysis is used to analyze the frequency response of the crossover. This is to validate filter behaviour, such as crossover frequency and filter slopes. Overall, the overarching purpose of running this analysis is to confirm the behaviour of the Linkwitz-Riley crossover.
+As stated above, spice simulation allows relatively simple design validation. This is to ensure that the system works as intended and to identify any issues. For preliminary analysis, simulations are run for both AC analysis and transient analysis. AC analysis is used to analyze the frequency response of the crossover. This is to validate filter behavior, such as crossover frequency and filter slopes. Overall, the overarching purpose of running this analysis is to confirm the behavior of the Linkwitz-Riley crossover.
 
-The transient analysis is to evaluate the full system behaviour in the time domain using real audio input. In practical terms, it provides an indication of whether the signal processing behaves as expected when playing music. Plotting waveforms at various locations in the system allows the effects of each stage to be analyzed. Apart from qualitatively analysing output through listening, waveforms can be analysed to show distortion, clipping, phase misalignment, and saturation effects.
+The transient analysis is to evaluate the full system behavior in the time domain using real audio input. In practical terms, it provides an indication of whether the signal processing behaves as expected when playing music. Plotting waveforms at various locations in the system allows the effects of each stage to be analyzed. Apart from qualitatively analyzing output through listening, waveforms can be analyzed to show distortion, clipping, phase misalignment, and saturation effects.
 
 # Circuit Implementation And Assumptions
 The system being modeled consists of 4 parts: the input stage, the volume control, the equalizer stage, and the crossover stage. The 4 stages are cascaded while also keeping left and right channels isolated. A schematic of the system is included below for reference.
@@ -49,10 +49,10 @@ For assessing the system as a whole, all stages are cascaded as they would in th
 ![schematic]({{ 'assets/images/2026-05-15 system schematic.png' | relative_url }})
 
 # Frequency Response (AC Analysis)
-The frequency response of the crossover is used to validate proper 4th-order Linkwitz-Riley behaviour. This is achieved by cascading two Butterworth filters of the same cutoff frequency, resulting in outputs that are each attenuated by −6 dB at the crossover frequency and remain in phase when summed. Another important confirmation is that the crossover has a roll-off rate of 24 dB per octave, meaning frequencies beyond the crossover point are attenuated very rapidly. The steep slope helps reduce overlap between drivers, improving frequency separation and reducing unwanted distortion or interference outside each speaker's intended operating range.
+The frequency response of the crossover is used to validate proper 4th-order Linkwitz-Riley behavior. This is achieved by cascading two Butterworth filters of the same cutoff frequency, resulting in outputs that are each attenuated by −6 dB at the crossover frequency and remain in phase when summed. Another important confirmation is that the crossover has a roll-off rate of 24 dB per octave, meaning frequencies beyond the crossover point are attenuated very rapidly. The steep slope helps reduce overlap between drivers, improving frequency separation and reducing unwanted distortion or interference outside each speaker's intended operating range.
 
 ## Simulation Setup and SPICE Directives
-To evaluate the frequency response of the crossover network, an AC sweep analysis was performed in LTspice. The simulation was configured to analyze how the filter stages attenuate and pass signals across the audible frequency spectrum. An AC sweep analysis tests the circuit at various frequencies to show behaviour at different frequencies.
+To evaluate the frequency response of the crossover network, an AC sweep analysis was performed in LTspice. The simulation was configured to analyze how the filter stages attenuate and pass signals across the audible frequency spectrum. An AC sweep analysis tests the circuit at various frequencies to show behavior at different frequencies.
 
 The following SPICE directives were used:
  ```
@@ -277,7 +277,7 @@ By setting a single parameter to 0.1, the corresponding frequency band is signif
 
 Repeating this process for all three parameters ensures that the response of each band can be independently verified. The resulting outputs are then compared to confirm that the equalizer behaves predictably.
 
-Below are the audio samples demonstrating this behaviour:
+Below are the audio samples demonstrating this behavior:
 
 <style>
   .audio-section {
@@ -400,7 +400,7 @@ Below are the audio samples demonstrating this behaviour:
 </div> </div>
 
 
-Apart from sonic analysis, waveforms can also be interpreted to display system behaviour. below a section from the plot showing the left input against the left output summed with the subwoofer channel. This displays the lack of distortion as the waveform remains very similar to the original input, apart from the small phase shift. The phase shift does not affect the audio as the same shift is applied to all the output channels.
+Apart from sonic analysis, waveforms can also be interpreted to display system behavior. below a section from the plot showing the left input against the left output summed with the subwoofer channel. This displays the lack of distortion as the waveform remains very similar to the original input, apart from the small phase shift. The phase shift does not affect the audio as the same shift is applied to all the output channels.
 
 ![schematic]({{ 'assets/images/2026-05-19 phase.png' | relative_url }})
 
@@ -418,12 +418,12 @@ Overall, the simulation results provide strong evidence that the system performs
 # Limitations of Simulation
 While the LTspice simulation provides a useful validation of the design, several limitations should be acknowledged.
 
-Firstly, the op-amp used in the model is an idealized LTspice model. Although it demonstrates key behaviours such as gain and frequency response of audio op-amps, it does not fully represent physical behaviour like input currents, slew-rate induced distortion, thermal drift, output current limits, or supply rail imperfections. In practice, these factors can introduce additional distortion or slight changes in the frequency response that are not visible in simulation.
+Firstly, the op-amp used in the model is an idealized LTspice model. Although it demonstrates key behaviors such as gain and frequency response of audio op-amps, it does not fully represent physical behavior like input currents, slew-rate induced distortion, thermal drift, output current limits, or supply rail imperfections. In practice, these factors can introduce additional distortion or slight changes in the frequency response that are not visible in simulation.
 
-Secondly, the simulation does not include PCB parasitics or wiring effects. Real circuits exhibit capacitance, trace inductance, and grounding impedance, all of which can slightly shift cutoff frequencies or alter filter Q factors, especially at higher frequencies.
+Secondly, the simulation does not include PCB parasitic or wiring effects. Real circuits exhibit capacitance, trace inductance, and grounding impedance, all of which can slightly shift cutoff frequencies or alter filter Q factors, especially at higher frequencies.
 
 # Summary 
-Through the use of LTspice, the behaviour of the complete multi-stage audio system is validated before physical implementation. Two forms of analysis were performed: AC analysis to verify crossover performance and transient analysis to evaluate full-system audio behaviour using real music input.
+Through the use of LTspice, the behavior of the complete multi-stage audio system is validated before physical implementation. Two forms of analysis were performed: AC analysis to verify crossover performance and transient analysis to evaluate full-system audio behavior using real music input.
 
 The AC simulations confirms the intended performance of the 4th-order Linkwitz–Riley crossover, achieving a crossover frequency of approximately 101 Hz, –6 dB attenuation at crossover, and a 24 dB/octave roll-off and also maintaining an essentially flat summed response.
 
