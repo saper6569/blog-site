@@ -62,3 +62,20 @@ Another key usage is for toggling the GPIO_MODE parameter. GPIO_MODE contains a 
 - Custom TOGGLE_BIT instruction allows any bit in the following locations to be manipulated: REF_BIT, BREAK_BIT, GPIO_MODE, GENERAL_PURPOSE_BIT
 - Counter for WAIT instruction
 - io port hardware for bidirectional communication
+
+# Custom Instruction set (2 instructions 1 op code bits): <- likely will not be used
+The instruction set can be reduced to only two instructions by using the principle of state-controlled instruction behavior. Instead of assigning a separate opcode to each operation, a single-bit instruction can perform different operations depending on the values of configurable control bits.
+
+## The instruction set consists of:
+- (0) TOGGLE_BIT   Address  : flips the bit at the specified address.
+- (1) DO_SOMETHING Value    : performs an operation determined by the current configuration of the processor's control bits.
+
+The TOGGLE_BIT instruction provides a general mechanism for modifying the processor's state. By toggling different control bits, the programmer can configure what the DO_SOMETHING instruction does. This effectively allows multiple operations to be represented using a single instruction opcode.
+
+For example, dedicated control bits could determine whether DO_SOMETHING performs a shift, waits for a specified number of cycles, waits for an input event, or performs another required operation. Additional toggleable bits can be introduced to provide more possible behaviors without increasing the instruction width.
+
+This approach trades additional state bits and decoding logic for a reduction in instruction-memory size. Because the instruction memory is stored on-chip, reducing the instruction width can provide a significant area savings. The tradeoff is that operations may require multiple instructions: a TOGGLE_BIT instruction configures the desired behavior, followed by DO_SOMETHING to execute it.
+
+The architecture can therefore be viewed as a small programmable state machine, where TOGGLE_BIT modifies the state of the processor and DO_SOMETHING acts on that state. This allows the same instruction to implement different communication-protocol operations while maintaining an extremely small instruction encoding.
+
+Due to the tradeoff of requiring more instructions to complete the same action this instruction set is likely not as advantageous as it sounds, and therefore will likely not be implemented. 
