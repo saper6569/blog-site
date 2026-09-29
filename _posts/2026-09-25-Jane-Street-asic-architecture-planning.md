@@ -48,7 +48,7 @@ To accommodate this without adding a dedicated I²C peripheral, each GPIO will h
 - (10) SHIFT      Address  : shift in or out depending on ref bit 
 - (11) WAIT_EVENT Adress   : wait until high or low from input depending on ref bit
 
-WAIT for N=000...., is a do nothing instruction, and simplifies the loop based instruction procedure by allowing instruction storage to be intialized to 00.... where on this instruction will increment PC towards overflow.
+WAIT for N=000...., is a do nothing instruction, and simplifies the loop based instruction procedure by allowing instruction storage to be initialized to 00.... where on this instruction will increment PC towards overflow.
 
 ## TOGGLE_BIT
 TOGGLE_BIT has some special properties that allow it to reduce instructions as well as hardware size. The main property is that it provides a mode of completing a "write" operations without an extra instruction. The best way that a write can be completed is by using the GENERAL_PURPOSE_BIT to toggle to the value that is wanted, and then use a SHIFT call paired with the required REF_BIT value to move the bit to wherever it is needed. Since this bit has a known starting value it can be easily used for replicable results.
@@ -57,7 +57,7 @@ Another key usage is for toggling the GPIO_MODE parameter. GPIO_MODE contains a 
 
 # Custom Hardware Architecture:
 - Hard coded uart for programming instructions and shift register
-- Loop based processor for allowing repititon (allow overflow of PC)
+- Loop based processor for allowing repetition (allow overflow of PC)
 - Limited onboard instruction memory (memory type not yet decided)
 - Custom TOGGLE_BIT instruction allows any bit in the following locations to be manipulated: REF_BIT, BREAK_BIT, GPIO_MODE, GENERAL_PURPOSE_BIT
 - Counter for WAIT instruction
